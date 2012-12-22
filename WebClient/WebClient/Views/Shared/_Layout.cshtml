@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="header">
+            <h1>nkServer WebClient 0.1</h1>
+        </div>
+
+        <div id="sidebar">
+            <ul>
+                <li>@Html.ActionLink("Public", "Index", "Home")</li>
+                <li>@Html.ActionLink("Privat", "Private", "Home")</li>
+            </ul>
+        </div>
+
+        <div id="content">
+            @RenderBody()
+        </div>
+        
+        <div id="footer">
+            <p>Perpetrat per Marc Kraken Lead Programmer Best In The Night Gamming Worst Of Times Very Well</p>
+        </div>
+    </body>
+</html>

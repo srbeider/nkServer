@@ -1,0 +1,32 @@
+﻿body {
+    background-color: black;
+    font-family: Verdana;
+    color: white;
+}
+
+#header {
+}
+
+#sidebar {
+    float: left;
+    width: 150px;
+    margin: 10px;
+}
+
+    #sidebar ul {
+        list-style-type: none;
+        cursor: pointer;
+    }
+
+    #sidebar li:hover {
+        background-color: gray;
+    }
+
+#content {
+}
+
+#footer {
+    text-align: center;
+    font-size: 10px;
+    clear: both;
+}
