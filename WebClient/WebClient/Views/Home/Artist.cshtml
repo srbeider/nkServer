@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Artist";
+}
+
+<h2>Artist</h2>
+
+<div>
+    <label>Id: <span id="lblId"></span></label><br />
+    <label for="txtName">Nom:</label><input type="text" id="txtName" /><br />
+    <label for="txtCategory">Estil:</label><input type="text" id="txtCategory" /><br />
+    <label for="txtScore">Puntuació:</label><input type="text" id="txtScore" />
+</div>
+
+<div>
+    <label>Artistes:</label>
+    <ul id="ulArtistes"></ul>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $.getJSON('http://localhost/ArtistsService/api/artists',
+            function (data) {
+                $.each(data, function (key, val) {
+                    $('<li/>', { text: val.Name, onclick: 'loadartist("' + val.Id + '");' }).appendTo($('#ulArtistes'));
+                });
+            });
+    });
+
+    function loadartist(id) {
+        $.getJSON('http://localhost/ArtistsService/api/artists/' + id,
+            function (data) {
+                $('#lblId').val(data.Id);
+                $('#txtName').val(data.Name);
+                $('#txtCategory').val(data.Category);
+                $('#txtScore').val(data.Score);
+            });
+    }
+</script>

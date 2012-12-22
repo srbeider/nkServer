@@ -19,5 +19,10 @@ namespace WebClient.Controllers
         {
             return View();
         }
+
+        public ActionResult Artist()
+        {
+            return View();
+        }
     }
 }
