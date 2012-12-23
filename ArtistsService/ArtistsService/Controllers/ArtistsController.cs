@@ -10,22 +10,16 @@ namespace ArtistsService.Controllers
 {
     public class ArtistsController : ApiController
     {
-        Artist[] artists = new Artist[]
-        {
-            new Artist{Id = 1, Category = "Pop", Name = "Kill Me Later", Score = 9},
-            new Artist{Id = 2, Category = "Rock", Name="Pablo is a Rockstar", Score = 10},
-            new Artist{Id = 3, Category = "Classic", Name="Kraken Simphonic Orchestra", Score = 3.4f},
-            new Artist{Id = 4, Category = "Classic", Name="London Orchestra", Score = 7.7f}
-        };
+        static readonly IArtistsRepository repository = new ArtistsRepository();
 
         public IEnumerable<Artist> GetAllArtists()
         {
-            return artists;
+            return repository.GetAll();
         }
 
         public Artist GetArtistById(int id)
         {
-            var artist = artists.FirstOrDefault(a => a.Id == id);
+            var artist = repository.Get(id);
             if (artist == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -35,7 +29,7 @@ namespace ArtistsService.Controllers
 
         public IEnumerable<Artist> GetArtistsByCategory(string category)
         {
-            var result = artists.Where(a => string.Equals(a.Category, category, StringComparison.OrdinalIgnoreCase));
+            var result = repository.GetAll().Where(a => string.Equals(a.Category, category, StringComparison.OrdinalIgnoreCase));
             if (result == null || result.Count() == 0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

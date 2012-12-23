@@ -128,6 +128,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\ArtistsRepository.cs" />
+    <Compile Include="Models\IArtistsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
