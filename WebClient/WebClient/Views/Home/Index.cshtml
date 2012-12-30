@@ -5,10 +5,10 @@
 <h2>Public!!</h2>
 
 <p>nkServer web client home page.</p>
-<img alt="KRAKEN!" src="@Url.Content("~/Content/Images/kraken.jpg")" style="width: 50%; height: 50%;" />
+<img alt="KRAKEN!" src="@Url.Content("~/Content/Images/kraken.jpg")" style="width: 25%; height: 25%;" />
 
-<input type="hidden" id="hdHost" value="http://users.nazkraken.com" />
-@*<input type="hidden" id="hdHost" value="localhost:50285" />*@
+@*<input type="hidden" id="hdHost" value="http://users.nazkraken.com" />*@
+<input type="hidden" id="hdHost" value="http://localhost" />
 
 <div id="marc"></div>
 <div id="nuria"></div>
@@ -16,13 +16,4 @@
 <div id="ray"></div>
 <div id="steff"></div>
 
-<script type="text/javascript">
-    var host = $('#hdHost').val();
-
-    $(document).ready(function () {
-        $.getJSON(host + '/api/Users/Marc',
-            function (data) {
-                alert(data);
-            });
-    });
-</script>
+<input type="button" onclick="LoadUserName('Marc');" value="MARC" />
