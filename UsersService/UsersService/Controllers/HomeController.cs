@@ -4,21 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebClient.Controllers
+namespace UsersService.Controllers
 {
-    public class ServiceController : Controller
+    public class HomeController : Controller
     {
         //
-        // GET: /Service/
+        // GET: /Home/
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult GetUserName()
-        {
-            return View();
-        }
     }
 }

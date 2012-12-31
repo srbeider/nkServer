@@ -32,12 +32,13 @@ namespace WebClient
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.Equals("Service"))
+            if (filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.Equals("Users"))
             {
-                var url = @"http://localhost:51895/Users/Marc";
+                var url = string.Format(@"http://localhost:51895/{0}/{1}", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, filterContext.ActionDescriptor.ActionName);
                 var uri = new Uri(url, UriKind.Absolute);
                 var request = WebRequest.Create(uri);
                 request.Method = "POST";
+                
                 var response = request.GetResponse();
                 var s = response.GetResponseStream();
                 var sr = new StreamReader(s, Encoding.ASCII);

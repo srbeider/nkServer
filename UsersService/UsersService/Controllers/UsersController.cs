@@ -11,43 +11,43 @@ namespace UsersService.Controllers
     {
         private class User
         {
+            public string Id { get; set; }
             public string Name { get; set; }
         }
 
         public JsonResult Index()
         {
-            Thread.Sleep(10000);
-            return Json(new User { Name = "Marc" });
+            return Json(new User { Id = "2", Name = "Marc" });
         }
 
         public JsonResult Nuria()
         {
             Thread.Sleep(10000);
-            return Json(new User { Name = "Nuria" });
+            return Json(new User { Id = "1", Name = "Nuria" });
         }
 
         public JsonResult Marc()
         {
             Thread.Sleep(10000);
-            return Json(new User { Name = "Marc" });
+            return Json(new User { Id = "2", Name = "Marc" });
         }
 
         public JsonResult Pablo()
         {
             Thread.Sleep(10000);
-            return Json(new User { Name = "Pablo" });
+            return Json(new User { Id = "3", Name = "Pablo" });
         }
 
         public JsonResult Ray()
         {
             Thread.Sleep(10000);
-            return Json(new User { Name = "Ray" });
+            return Json(new User { Id = "4", Name = "Ray" });
         }
 
         public JsonResult Steff()
         {
             Thread.Sleep(10000);
-            return Json(new User { Name = "Steff" });
+            return Json(new User { Id = "5", Name = "Steff" });
         }
     }
 }
