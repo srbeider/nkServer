@@ -1,4 +1,5 @@
-﻿using System;
+﻿using nk.ServerBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace UsersService.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private class User
         {
@@ -17,37 +18,86 @@ namespace UsersService.Controllers
 
         public JsonResult Index()
         {
-            return Json(new User { Id = "2", Name = "Marc" });
+            try
+            {
+                var result = new User { Id = "2", Name = "Marc" };
+                return JsonResponse(result, null);
+            }
+            catch (Exception e)
+            {
+                return JsonError(e, null, Request.Url.AbsoluteUri);
+            }
         }
 
         public JsonResult Nuria()
         {
-            Thread.Sleep(10000);
-            return Json(new User { Id = "1", Name = "Nuria" });
+            try
+            {
+                Thread.Sleep(10000);
+                var result = new User { Id = "1", Name = "Nuria" };
+                return JsonResponse(result, null);
+            }
+            catch (Exception e)
+            {
+                return JsonError(e, null, Request.Url.AbsoluteUri);
+            }
         }
 
         public JsonResult Marc()
         {
-            Thread.Sleep(10000);
-            return Json(new User { Id = "2", Name = "Marc" });
+            try
+            {
+                Thread.Sleep(10000);
+                var result = new User { Id = "2", Name = "Marc" };
+                throw new Exception("A petarlo to!");
+                return JsonResponse(result, null);
+            }
+            catch (Exception e)
+            {
+                return JsonError(e, null, Request.Url.AbsoluteUri);
+            }
         }
 
         public JsonResult Pablo()
         {
-            Thread.Sleep(10000);
-            return Json(new User { Id = "3", Name = "Pablo" });
+            try
+            {
+                Thread.Sleep(10000);
+                var result = new User { Id = "3", Name = "Pablo" };
+                return JsonResponse(result, null);
+            }
+            catch (Exception e)
+            {
+                return JsonError(e, null, Request.Url.AbsoluteUri);
+            }
         }
 
         public JsonResult Ray()
         {
-            Thread.Sleep(10000);
-            return Json(new User { Id = "4", Name = "Ray" });
+            try
+            {
+                Thread.Sleep(10000);
+                var result = new User { Id = "4", Name = "Ray" };
+                return JsonResponse(result, null);
+            }
+            catch (Exception e)
+            {
+                return JsonError(e, null, Request.Url.AbsoluteUri);
+            }
         }
 
         public JsonResult Steff()
         {
-            Thread.Sleep(10000);
-            return Json(new User { Id = "5", Name = "Steff" });
+            try
+            {
+                Thread.Sleep(10000);
+                var result = new User { Id = "5", Name = "Steff" };
+                return JsonResponse(result, null);
+            }
+            catch (Exception e)
+            {
+                return JsonError(e, null, Request.Url.AbsoluteUri);
+            }
         }
     }
 }

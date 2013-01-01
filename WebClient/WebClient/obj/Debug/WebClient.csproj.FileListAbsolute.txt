@@ -33,3 +33,5 @@ C:\GitHub\nkServer\WebClient\WebClient\bin\es\System.Web.WebPages.Razor.resource
 C:\GitHub\nkServer\WebClient\WebClient\obj\Debug\WebClient.csprojResolveAssemblyReference.cache
 C:\GitHub\nkServer\WebClient\WebClient\obj\Debug\WebClient.dll
 C:\GitHub\nkServer\WebClient\WebClient\obj\Debug\WebClient.pdb
+C:\GitHub\nkServer\WebClient\WebClient\bin\ServerBase.dll
+C:\GitHub\nkServer\WebClient\WebClient\bin\ServerBase.pdb

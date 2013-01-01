@@ -14,33 +14,6 @@ function LoadUserName(userName) {
     });
 }
 
-function MakePostCall(url, args, onsuccess, onerror) {
-
-    if (onsuccess) {
-
-        var host = $('#hdHost').val();
-        url = host + url;
-
-        if (onerror == null || onerror == undefined) {
-            onerror = function (error) {
-                alert(error);
-            }
-        }
-
-        $.ajax(
-        {
-            type: 'POST',
-            url: url,
-            data: args,
-            success: onsuccess,
-            error: onerror
-        });
-    }
-    else {
-        alert("onsuccess is null or is not an object.");
-    }
-}
-
 function destroy(element) {
     $(element).remove();
 }

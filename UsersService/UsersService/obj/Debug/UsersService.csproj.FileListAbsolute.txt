@@ -39,3 +39,5 @@ C:\GitHub\nkServer\UsersService\UsersService\bin\es\System.Web.WebPages.Razor.re
 C:\GitHub\nkServer\UsersService\UsersService\obj\Debug\UsersService.csprojResolveAssemblyReference.cache
 C:\GitHub\nkServer\UsersService\UsersService\obj\Debug\UsersService.dll
 C:\GitHub\nkServer\UsersService\UsersService\obj\Debug\UsersService.pdb
+C:\GitHub\nkServer\UsersService\UsersService\bin\ServerBase.dll
+C:\GitHub\nkServer\UsersService\UsersService\bin\ServerBase.pdb

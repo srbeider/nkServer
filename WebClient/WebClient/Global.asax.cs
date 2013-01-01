@@ -21,44 +21,8 @@ namespace WebClient
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
-            var filters = GlobalFilters.Filters;
-            filters.Add(new ServiceCallFilter());
-            FilterConfig.RegisterGlobalFilters(filters);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-        }
-    }
-
-    public class ServiceCallFilter : ActionFilterAttribute
-    {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            if (filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.Equals("Users"))
-            {
-                var url = string.Format(@"http://localhost:51895/{0}/{1}", filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, filterContext.ActionDescriptor.ActionName);
-                var uri = new Uri(url, UriKind.Absolute);
-                var request = WebRequest.Create(uri);
-                request.Method = "POST";
-                
-                var response = request.GetResponse();
-                var s = response.GetResponseStream();
-                var sr = new StreamReader(s, Encoding.ASCII);
-                var result = sr.ReadToEnd();
-                filterContext.Result = new JsonResult();
-                WriteResponse(result, filterContext);
-            }
-            else
-            {
-                base.OnActionExecuting(filterContext);
-            }
-        }
-
-        private void WriteResponse(string txt, ControllerContext filterContext)
-        {
-            var response = filterContext.HttpContext.Response;
-            if (response.ContentType == "text/html")
-            {
-                response.Write(txt);
-            }
         }
     }
 }

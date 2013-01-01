@@ -5,8 +5,14 @@
         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
         <script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/helpers.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/service.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/popup.js")" type="text/javascript"></script>
     </head>
     <body>
+        <div id="popUpContainer">
+            <input type="hidden" id="hdNumPopUps" value="0" />
+        </div>
+
         <div id="header">
             <h1>nkServer WebClient 0.1</h1>
         </div>
@@ -25,6 +31,20 @@
         
         <div id="footer">
             <p>Perpetrat per Marc Kraken Lead Programmer Best In The Night Gamming Worst Of Times Very Well</p>
+        </div>
+
+        <div id="hiddenContent">
+
+            <div id="popUp" class="popUpBackground">
+                <div class="popUp">
+                    <div id="message"></div>
+                    <div id="buttons">
+                        <input id="okButton" type="button" value="OK" />
+                        <input id="cancelButton" type="button" value="Cancel" />
+                    </div>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>

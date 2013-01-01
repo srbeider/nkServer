@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace WebClient.Controllers
 {
-    [ServiceCallFilter]
     public class UsersController : Controller
     {
         public ActionResult Nuria()
@@ -30,6 +29,11 @@ namespace WebClient.Controllers
         }
 
         public ActionResult Steff()
+        {
+            return View();
+        }
+
+        public ActionResult Inventat()
         {
             return View();
         }
