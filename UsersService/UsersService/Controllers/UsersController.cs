@@ -1,4 +1,5 @@
 ﻿using nk.ServerBase;
+using nk.ServerBase.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,28 @@ namespace UsersService.Controllers
 {
     public class UsersController : BaseController
     {
-        private class User
+        private class UserPlugged
         {
             public string Id { get; set; }
             public string Name { get; set; }
         }
 
-        public JsonResult Index()
+        private List<UserPlugged> users = new List<UserPlugged>
+        {
+            new UserPlugged { Id = "1", Name = "Núria" },
+            new UserPlugged { Id = "2", Name = "Marc" },
+            new UserPlugged { Id = "3", Name = "Pablo" },
+            new UserPlugged { Id = "4", Name = "Ray" },
+            new UserPlugged { Id = "5", Name = "Steff" }
+        };
+
+        [HttpPost]
+        public JsonResult GetUserById(ServiceArgs<string> data)
         {
             try
             {
-                var result = new User { Id = "2", Name = "Marc" };
-                return JsonResponse(result, null);
+                var result = users.FirstOrDefault(u => u.Equals(data.Args));
+                return JsonResponse(result, data.RequestId);
             }
             catch (Exception e)
             {
@@ -34,7 +45,7 @@ namespace UsersService.Controllers
             try
             {
                 Thread.Sleep(10000);
-                var result = new User { Id = "1", Name = "Nuria" };
+                var result = users.FirstOrDefault(u => u.Equals("1"));
                 return JsonResponse(result, null);
             }
             catch (Exception e)
@@ -48,7 +59,7 @@ namespace UsersService.Controllers
             try
             {
                 Thread.Sleep(10000);
-                var result = new User { Id = "2", Name = "Marc" };
+                var result = users.FirstOrDefault(u => u.Equals("2"));
                 throw new Exception("A petarlo to!");
                 return JsonResponse(result, null);
             }
@@ -63,7 +74,7 @@ namespace UsersService.Controllers
             try
             {
                 Thread.Sleep(10000);
-                var result = new User { Id = "3", Name = "Pablo" };
+                var result = users.FirstOrDefault(u => u.Equals("3"));
                 return JsonResponse(result, null);
             }
             catch (Exception e)
@@ -77,7 +88,7 @@ namespace UsersService.Controllers
             try
             {
                 Thread.Sleep(10000);
-                var result = new User { Id = "4", Name = "Ray" };
+                var result = users.FirstOrDefault(u => u.Equals("4"));
                 return JsonResponse(result, null);
             }
             catch (Exception e)
@@ -91,7 +102,7 @@ namespace UsersService.Controllers
             try
             {
                 Thread.Sleep(10000);
-                var result = new User { Id = "5", Name = "Steff" };
+                var result = users.FirstOrDefault(u => u.Equals("5"));
                 return JsonResponse(result, null);
             }
             catch (Exception e)

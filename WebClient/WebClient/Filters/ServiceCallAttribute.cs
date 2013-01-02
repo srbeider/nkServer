@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Web;
 using System.Web.Helpers;
@@ -24,6 +25,18 @@ namespace WebClient.Filters
                 {
                     var request = WebRequest.Create(uri);
                     request.Method = "POST";
+                    var postParams = filterContext.ActionParameters["data"];
+
+                    if (postParams != null)
+                    {
+                        var bFormatter = new BinaryFormatter();
+                        var dataStream = request.GetRequestStream();
+                        bFormatter.Serialize(dataStream, postParams);
+                        //request.ContentType = "application/x-www-form-urlencoded";
+                        //request.ContentLength = request.GetRequestStream().Length;
+                        dataStream.Close();
+                    }
+
                     var response = request.GetResponse();
                     var s = response.GetResponseStream();
                     var sr = new StreamReader(s, Encoding.ASCII);

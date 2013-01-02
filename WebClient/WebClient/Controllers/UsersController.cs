@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using nk.ServerBase.Contracts;
 using System.Web.Mvc;
 
 namespace WebClient.Controllers
 {
     public class UsersController : Controller
     {
+        [HttpPost]
+        public ActionResult GetUserById(ServiceArgs<string> data)
+        {
+            return View();
+        }
+
         public ActionResult Nuria()
         {
             return View();

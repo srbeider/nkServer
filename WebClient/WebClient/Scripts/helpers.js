@@ -1,19 +1,15 @@
 ﻿function LoadUsers() {
-    LoadUserName("Nuria");
-    LoadUserName("Marc");
-    LoadUserName("Pablo");
-    LoadUserName("Ray");
-    LoadUserName("Steff");
+    LoadUserName("1");
+    LoadUserName("2");
+    LoadUserName("3");
+    LoadUserName("4");
+    LoadUserName("5");
 }
 
 function LoadUserName(userName) {
 
-    var args = { Args: userName };
-    MakePostCall('/WebClient/Users/' + userName, args, function (data) {
-        $('#' + data.Id).html('<label onclick="destroy(this);">' + data.Name + '</label>');
+    var args = { RequestId: new Date().getTime(), Args: userName };
+    MakePostCall('/WebClient/Users/GetUserById', args, function (data) {
+        $('#' + data.Id).html('<label onclick="$(this).remove();">' + data.Name + '</label>');
     });
-}
-
-function destroy(element) {
-    $(element).remove();
 }
